@@ -7,18 +7,17 @@ import Sup, { SupProps } from './components/Sup';
 import Think from './components/Think';
 import useStyle from './style';
 
-export type MessageProps = MarkdownProps &
-  SupProps & {
-    prefixCls?: string;
-    style?: React.CSSProperties;
-    className?: string;
-    type?: 'markdown' | 'sup' | 'think';
-    content?: string | React.ReactNode;
+export type MessageProps = Omit<MarkdownProps & SupProps, 'content'> & {
+  prefixCls?: string;
+  style?: React.CSSProperties;
+  className?: string;
+  type?: 'markdown' | 'sup' | 'think';
+  content?: React.ReactNode;
 
-    // think props
-    title?: React.ReactNode;
-    logo?: React.ReactNode;
-  };
+  // think props
+  title?: React.ReactNode;
+  logo?: React.ReactNode;
+};
 
 const Message: React.FC<React.PropsWithChildren<MessageProps>> = (props) => {
   const {

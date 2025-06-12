@@ -11,7 +11,7 @@ interface ThinkProps {
 
 const Think: React.FC<ThinkProps> = ({ content, prefixCls, title, logo }) => {
   const compCls = `${prefixCls}-think`;
-  const [isExpand, setIsExpand] = useState(false);
+  const [isExpand, setIsExpand] = useState(true);
 
   return (
     <div className={compCls}>
