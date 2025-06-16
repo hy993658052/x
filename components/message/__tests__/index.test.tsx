@@ -66,7 +66,7 @@ describe('message', () => {
     expect(element?.textContent).toBe('hello world');
   });
 
-  it('Message support type markdown', () => {
+  it('Message support type source', () => {
     const { container } = render(
       <Message
         type="source"
@@ -84,10 +84,10 @@ describe('message', () => {
       />,
     );
     const element = container.querySelector<HTMLDivElement>(
-      '.ant-message ant-message-source-title',
+      '.ant-message .ant-message-source-title',
     );
     expect(element?.textContent).toBe('search sources');
-    fireEvent.mouseDown(container.querySelector('.ant-message-source-title-wrapper')!);
+    fireEvent.click(container.querySelector('.ant-message-source-title-wrapper')!);
     act(() => {
       jest.runAllTimers();
     });

@@ -12,6 +12,7 @@ export type MessageProps = Omit<SupProps, 'content'> & {
   prefixCls?: string;
   style?: React.CSSProperties;
   className?: string;
+  rootClassName?: string;
   type?: 'sup' | 'think' | 'source' | 'system';
   content?: React.ReactNode;
 
@@ -30,11 +31,12 @@ export type MessageProps = Omit<SupProps, 'content'> & {
   divider?: boolean | string;
 };
 
-const Message: React.FC<React.PropsWithChildren<MessageProps>> = (props) => {
+const ForwardMessage: React.FC<React.PropsWithChildren<MessageProps>> = (props) => {
   const {
     prefixCls: customizePrefixCls,
     style,
     className,
+    rootClassName,
     type,
     children,
     content,
@@ -47,9 +49,17 @@ const Message: React.FC<React.PropsWithChildren<MessageProps>> = (props) => {
 
   const [wrapCSSVar, hashId, cssVarCls] = useStyle(prefixCls);
 
-  const mergedCls = classnames(prefixCls, contextConfig.className, className, hashId, cssVarCls, {
-    [`${prefixCls}-rtl`]: direction === 'rtl',
-  });
+  const mergedCls = classnames(
+    prefixCls,
+    contextConfig.className,
+    className,
+    rootClassName,
+    hashId,
+    cssVarCls,
+    {
+      [`${prefixCls}-rtl`]: direction === 'rtl',
+    },
+  );
 
   const ContentNode = () => {
     const childNode = content || children;
@@ -80,5 +90,23 @@ const Message: React.FC<React.PropsWithChildren<MessageProps>> = (props) => {
     </div>,
   );
 };
+
+type CompoundedMessage = typeof ForwardMessage & {
+  Sup: typeof Sup;
+  Think: typeof Think;
+  Source: typeof Source;
+  System: typeof System;
+};
+
+const Message = ForwardMessage as CompoundedMessage;
+
+if (process.env.NODE_ENV !== 'production') {
+  Message.displayName = 'Message';
+}
+
+Message.Sup = Sup;
+Message.Think = Think;
+Message.Source = Source;
+Message.System = System;
 
 export default Message;

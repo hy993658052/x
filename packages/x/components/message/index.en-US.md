@@ -19,7 +19,6 @@ Used to show messages during conversations.
 
 <!-- prettier-ignore -->
 <code src="./demo/basic.tsx">Basic</code>
-<code src="./demo/markdown.tsx">Markdown</code>
 <code src="./demo/sup.tsx">Sup</code>
 <code src="./demo/think.tsx">Think</code>
 <code src="./demo/source.tsx">Source</code>
