@@ -22,6 +22,8 @@ Used to show messages during conversations.
 <code src="./demo/markdown.tsx">Markdown</code>
 <code src="./demo/sup.tsx">Sup</code>
 <code src="./demo/think.tsx">Think</code>
+<code src="./demo/source.tsx">Source</code>
+<code src="./demo/system.tsx">System</code>
 
 ## API
 
@@ -51,6 +53,18 @@ More api：[PopoverProps](https://ant-design.antgroup.com/components/popover#api
 | -------- | ------------- | --------------- | ------- | ------- |
 | title    | Title content | React.ReactNode | -       | -       |
 | logo     | Logo content  | React.ReactNode | -       | -       |
+
+### MessageProps[type=source]
+
+| Property | Description  | Type                                               | Default | Version |
+| -------- | ------------ | -------------------------------------------------- | ------- | ------- |
+| items    | Source links | Array<{label: string; src: string; key?: string;}> | -       | -       |
+
+### MessageProps[type=system]
+
+| Property | Description           | Type              | Default | Version |
+| -------- | --------------------- | ----------------- | ------- | ------- |
+| divider  | Type of dividing line | boolean \| string | true    | -       |
 
 ## Semantic DOM
 

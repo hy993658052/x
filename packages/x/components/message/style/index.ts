@@ -16,12 +16,17 @@ const genMessageStyle: GenerateStyle<MessageToken> = (token) => {
     paddingXXS,
     paddingXS,
     marginXXS,
+    marginSM,
+    marginXS,
     colorTextSecondary,
     colorTextDescription,
+    colorText,
+    colorLink,
     fontSize,
     fontSizeHeading4,
     lineHeight,
     colorBorder,
+    lineWidth,
     calc,
   } = token;
 
@@ -66,6 +71,59 @@ const genMessageStyle: GenerateStyle<MessageToken> = (token) => {
           whiteSpace: 'pre-wrap',
           paddingLeft: '12px',
           borderLeft: `2px solid ${colorBorder}`,
+        },
+      },
+
+      [`${componentCls}-source`]: {
+        '&-title-wrapper': {
+          width: 'fit-content',
+          display: 'flex',
+          flexDirection: 'row',
+          gridGap: paddingXS,
+          alignItems: 'center',
+          fontSize: fontSize,
+          color: colorTextSecondary,
+          lineHeight: lineHeight,
+          cursor: 'pointer',
+        },
+
+        '&-content': {
+          margin: `${marginSM} 0`,
+        },
+
+        '&-list-item': {
+          marginTop: marginXS,
+        },
+
+        '&-link': {
+          color: colorText,
+
+          '&:hover': {
+            color: colorLink,
+          },
+        },
+      },
+
+      [`${componentCls}-system`]: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: colorTextDescription,
+
+        '&-content': {
+          flexBasis: 'max-content',
+          margin: `0 ${marginXS}`,
+        },
+
+        '&-divider': {
+          flex: 1,
+          border: 'none',
+          borderTop: `${lineWidth} solid ${colorBorder}`,
+        },
+
+        '&-divider-double': {
+          borderTop: `${calc(lineWidth).mul(4).equal()} double ${colorBorder}`,
         },
       },
     },
