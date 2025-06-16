@@ -3,7 +3,7 @@ import React from 'react';
 import Message from '..';
 import mountTest from '../../../tests/shared/mountTest';
 import rtlTest from '../../../tests/shared/rtlTest';
-import { render } from '../../../tests/utils';
+import { act, fireEvent, render } from '../../../tests/utils';
 
 describe('message', () => {
   mountTest(() => <Message content="test" />);
@@ -71,6 +71,42 @@ describe('message', () => {
       '.ant-message .ant-message-think-content',
     );
     expect(elementTitle?.textContent).toBe('thinking');
+    expect(element?.textContent).toBe('hello world');
+  });
+
+  it('Message support type markdown', () => {
+    const { container } = render(
+      <Message
+        type="source"
+        title={'search sources'}
+        items={[
+          {
+            label: '1. Source 1',
+            src: '#',
+          },
+          {
+            label: '2. Source 2',
+            src: '#',
+          },
+        ]}
+      />,
+    );
+    const element = container.querySelector<HTMLDivElement>(
+      '.ant-message ant-message-source-title',
+    );
+    expect(element?.textContent).toBe('search sources');
+    fireEvent.mouseDown(container.querySelector('.ant-message-source-title-wrapper')!);
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(container.querySelectorAll('.ant-message-source-list-item').length).toBe(2);
+  });
+
+  it('Message support type system', () => {
+    const { container } = render(<Message type="system" content={'hello world'} />);
+    const element = container.querySelector<HTMLDivElement>(
+      '.ant-message .ant-message-system-content',
+    );
     expect(element?.textContent).toBe('hello world');
   });
 });
