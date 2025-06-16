@@ -9,24 +9,9 @@ const App = () => {
     </div>
   );
 
-  const message2 = (
-    <Message
-      type="markdown"
-      content={'use in markdown[^1]'}
-      supProps={{
-        '1': {
-          popoverTitle: 'Title',
-          popoverContent: 'Content',
-        },
-      }}
-    />
-  );
-
   return (
     <>
       <Bubble variant="outlined" content={message1} />
-      <br />
-      <Bubble variant="outlined" content={message2} />
     </>
   );
 };

@@ -2,18 +2,17 @@ import classnames from 'classnames';
 import React from 'react';
 import useXComponentConfig from '../_util/hooks/use-x-component-config';
 import { useXProviderContext } from '../x-provider';
-import Markdown, { MarkdownProps } from './components/Markdown';
 import Source from './components/Source';
 import Sup, { SupProps } from './components/Sup';
 import System from './components/System';
 import Think from './components/Think';
 import useStyle from './style';
 
-export type MessageProps = Omit<MarkdownProps & SupProps, 'content'> & {
+export type MessageProps = Omit<SupProps, 'content'> & {
   prefixCls?: string;
   style?: React.CSSProperties;
   className?: string;
-  type?: 'markdown' | 'sup' | 'think' | 'source' | 'system';
+  type?: 'sup' | 'think' | 'source' | 'system';
   content?: React.ReactNode;
 
   // think props
@@ -54,9 +53,6 @@ const Message: React.FC<React.PropsWithChildren<MessageProps>> = (props) => {
 
   const ContentNode = () => {
     const childNode = content || children;
-    if (type === 'markdown') {
-      return <Markdown prefixCls={prefixCls} {...restProps} content={childNode as string} />;
-    }
     if (type === 'sup') {
       return <Sup prefixCls={prefixCls} {...restProps} content={childNode} />;
     }

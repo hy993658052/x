@@ -18,7 +18,6 @@ coverDark: https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*uaGhTY1-LL0AAA
 
 <!-- prettier-ignore -->
 <code src="./demo/basic.tsx">基础用法</code>
-<code src="./demo/markdown.tsx">使用Markdown</code>
 <code src="./demo/sup.tsx">使用角标</code>
 <code src="./demo/think.tsx">思考过程</code>
 <code src="./demo/source.tsx">来源引用</code>

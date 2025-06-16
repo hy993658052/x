@@ -46,14 +46,6 @@ describe('message', () => {
     expect(element).toHaveStyle({ backgroundColor: 'green' });
   });
 
-  it('Message support type markdown', () => {
-    const { container } = render(<Message content="# hello world" type="markdown" />);
-    const element = container.querySelector<HTMLDivElement>(
-      '.ant-message .ant-message-markdown h1',
-    );
-    expect(element?.textContent).toBe('hello world');
-  });
-
   it('Message support type sup', () => {
     const { container } = render(<Message content="1" type="sup" />);
     const element = container.querySelector<HTMLDivElement>('.ant-message .ant-message-sup');
